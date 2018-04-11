@@ -28,4 +28,9 @@ public class SpalteService {
     public List<Spalte> findAll(){
         return (List)spalteRepository.findAll();
     }
+
+    public Spalte findById(String name){
+        return null;
+        //TODO: return spalteRepository.findByName(name);
+    }
 }

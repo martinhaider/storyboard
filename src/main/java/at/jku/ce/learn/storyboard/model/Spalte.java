@@ -8,7 +8,7 @@ import java.util.List;
 public class Spalte {
 
     @Id
-    @Column(name="spalte")
+    @Column(name="name")
     private String name;
 
     @Column(name="position")

@@ -20,15 +20,19 @@ public class Aufgabe {
     @Column(name="estimate")
     private int estimate;
 
+    @Column(name="position")
+    private int position;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = {})
     @JoinColumn(name="spalte")
     private Spalte spalte;
 
-    public Aufgabe(String titel, String beschreibung, String person, int estimate, Spalte spalte) {
+    public Aufgabe(String titel, String beschreibung, String person, int estimate, int position, Spalte spalte) {
         this.titel = titel;
         this.beschreibung = beschreibung;
         this.person = person;
         this.estimate = estimate;
+        this.position = position;
         this.spalte = spalte;
     }
 
@@ -70,5 +74,13 @@ public class Aufgabe {
 
     public void setSpalte(Spalte spalte) {
         this.spalte = spalte;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }
