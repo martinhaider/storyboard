@@ -20,7 +20,8 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "styles/main.scss"
+        "styles/main.scss",
+        "../node_modules/ng-drag-drop/style.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
