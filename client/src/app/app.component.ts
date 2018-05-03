@@ -37,7 +37,7 @@ export class AppComponent {
       new Task('task3456', 'lorem ipsum dfmkdm wermektrm..', 13, 'emma smith'),
     ];
   }
-/*
+
   list1 = [
     {name: 'Toyota'},
     {name: 'Bugati'},
@@ -67,5 +67,4 @@ export class AppComponent {
     }).indexOf(item.name);
     list.splice(index, 1);
   }
-  */
 }
