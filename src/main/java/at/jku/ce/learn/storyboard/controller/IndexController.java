@@ -6,15 +6,13 @@ import at.jku.ce.learn.storyboard.service.AufgabeService;
 import at.jku.ce.learn.storyboard.service.SpalteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @Controller
 public class IndexController {
 
@@ -28,6 +26,8 @@ public class IndexController {
     public @ResponseBody List<Spalte> getAllSpalte(){
 
         List spalteList = spalteService.findAll();
+
+        System.out.println("get all spalte is called!");
 
         return spalteList;
     }
