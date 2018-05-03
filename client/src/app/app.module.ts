@@ -1,9 +1,12 @@
+import {jQuery} from 'jquery';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { ColumnComponent } from './column/column.component';
 import { TaskComponent } from './task/task.component';
+import {GetcolumnsserviceService} from "./services/getcolumnsservice.service";
 
 @NgModule({
   declarations: [
@@ -13,9 +16,12 @@ import { TaskComponent } from './task/task.component';
   ],
   imports: [
     BrowserModule,
-    NgDragDropModule.forRoot()
+    NgDragDropModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    GetcolumnsserviceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

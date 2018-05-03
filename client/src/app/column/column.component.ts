@@ -12,5 +12,6 @@ export class ColumnComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("column component");
   }
 }

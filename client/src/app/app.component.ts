@@ -1,6 +1,10 @@
+import {jQuery} from 'jquery';
 import { Component } from '@angular/core';
 import {DropEvent} from 'ng-drag-drop';
 import {Task} from "./task/task.model";
+import { OnInit } from '@angular/core';
+import {GetcolumnsserviceService} from "./services/getcolumnsservice.service";
+import {Column} from "./column/column.model";
 
 @Component({
   selector: 'app-root',
@@ -29,15 +33,11 @@ import {Task} from "./task/task.model";
 })
 export class AppComponent {
   tasks: Task[];
+  columns: Array<Column> = [];
 
-  constructor(){
-    this.tasks = [
-      new Task('task2', 'lorem ipsum dolor sit.', 5, 'john doe'),
-      new Task('task1', 'tesmktnjs rnjrenek w rje f.', 2, 'max muster'),
-      new Task('task3456', 'lorem ipsum dfmkdm wermektrm..', 13, 'emma smith'),
-    ];
+  constructor(private getcolumnsService: GetcolumnsserviceService){
   }
-/*
+
   list1 = [
     {name: 'Toyota'},
     {name: 'Bugati'},
@@ -67,5 +67,10 @@ export class AppComponent {
     }).indexOf(item.name);
     list.splice(index, 1);
   }
-  */
+  ngOnInit() {
+    this.getColumns();
+  }
+  getColumns(): void {
+     this.getcolumnsService.getColumns();
+  }
 }
