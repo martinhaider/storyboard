@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { ColumnComponent } from './column/column.component';
 import { TaskComponent } from './task/task.component';
-import { TaskModalComponent } from './task-modal/task-modal.component';
 import { ColumnModalComponent } from './column-modal/column-modal.component';
 import {GetcolumnsserviceService} from "./services/getcolumnsservice.service";
+import { TaskModalComponent } from './task-modal/task-modal.component';
 
 @NgModule({
   declarations: [

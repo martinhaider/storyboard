@@ -39,15 +39,19 @@ export class AppComponent {
   }
 
   list1 = [
-    {name: 'Toyota'},
-    {name: 'Bugati'},
-    {name: 'Suzuki'}
+    {title: 'Toyota', description: 'bla bla', assignee: 'lukas', estimate: 10},
+    {title: 'Bugati', description: 'ble ble', assignee: 'lukas', estimate: 5},
+    {title: 'sfdgf', description: 'cwecewcwbla bla', assignee: 'lukas', estimate: 10},
+    {title: 'Bfdg', description: 'blcwewcwere ble', assignee: 'luerretkas', estimate: 5},
+    {title: 'Toxfgc', description: 'bla blwewecwewa', assignee: 'lukacecerws', estimate: 10},
+    {title: 'Bdsfdgf', description: 'ble blsretrwree', assignee: 'lukceeas', estimate: 5},
+    {title: 'Suzuki', description: 'blu blu', assignee: 'martin', estimate: 3}
   ];
 
   list2 = [
-    {name: 'Mercedes'},
-    {name: 'Honda'},
-    {name: 'BMW'}
+    {title: 'lala', description: 'bla bla', assignee: 'matthias', estimate: 10},
+    {title: 'test', description: 'ble ble', assignee: 'max', estimate: 5},
+    {title: 'title', description: 'blu blu', assignee: 'maxime', estimate: 3}
   ];
 
 
@@ -63,8 +67,8 @@ export class AppComponent {
 
   removeItem(item: any, list: Array<any>) {
     let index = list.map(function (e) {
-      return e.name
-    }).indexOf(item.name);
+      return e.title
+    }).indexOf(item.title);
     list.splice(index, 1);
   }
   ngOnInit() {
