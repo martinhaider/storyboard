@@ -1,25 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #ECEEEF;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #ECEEEF;">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <app-task-modal></app-task-modal>
     <app-column-modal></app-column-modal>
     <div class="mr-auto"></div>
-    <span class="mr-3">
+    <span class="mr-3 text-light small">
       <i class="fas fa-sync"></i>
       status...
     </span>
-    <button type="button" class="btn btn-outline-danger">Reset Board</button>
+    <button type="button" class="btn btn-outline-warning btn-sm">Reset Board</button>
   </div>
 </nav>
 
 <div class="scroll">
   <div class="column">
     <div class="columnHeader d-flex justify-content-between align-items-center">
-      ToDo
+      Backlog
     <i class="fas fa-pencil-alt"></i>
     </div>
-    <div class="columnBox" droppable [dropScope]="'swap-target-1'" [dragOverClass]="'drag-target-border'"
-         [dragHintClass]="'drag-hint'" (onDrop)="onList1Drop($event)">
-      <div class="task" *ngFor="let item of list1" draggable [dragScope]="'swap-target-2'" [dragClass]="'drag-over'" [dragData]="item">
+    <div id="list1" class="columnBox" droppable [dragOverClass]="'drag-target-bg'" (onDrop)="onList1Drop($event)">
+      <div class="task" *ngFor="let item of list1" draggable [dragData]="item">
+        <div class="taskHeader d-flex justify-content-between align-items-center">
+          <h6>{{ item.title }}</h6>
+          <span class="badge badge-dark badge-pill">{{ item.estimate }}</span>
+        </div>
+        <p class="taskDescription">{{ item.description }}</p>
+        <div class="taskFooter d-flex">
+          <span class="taskAssignee mr-auto">{{ item.assignee }}</span>
+          <i class="fas fa-pencil-alt mr-2"></i>
+          <i class="far fa-trash-alt"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="columnHeader d-flex justify-content-between align-items-center">
+      ToDo
+      <i class="fas fa-pencil-alt"></i>
+    </div>
+    <div class="columnBox" droppable [dragOverClass]="'drag-target-bg'" (onDrop)="onList2Drop($event)">
+      <div class="task" *ngFor="let item of list2" draggable [dragData]="item">
         <div class="taskHeader d-flex justify-content-between align-items-center">
           <h6>{{ item.title }}</h6>
           <span class="badge badge-dark badge-pill">{{ item.estimate }}</span>
@@ -39,9 +59,8 @@
       In Progress
       <i class="fas fa-pencil-alt"></i>
     </div>
-    <div class="columnBox" droppable [dropScope]="'swap-target-2'" [dragOverClass]="'drag-target-border'"
-         [dragHintClass]="'drag-hint'" (onDrop)="onList2Drop($event)">
-      <div class="task" *ngFor="let item of list2" draggable [dragScope]="'swap-target-1'" [dragClass]="'drag-over'" [dragData]="item">
+    <div class="columnBox" droppable [dragOverClass]="'drag-target-bg'" (onDrop)="onList3Drop($event)">
+      <div class="task" *ngFor="let item of list3" draggable [dragData]="item">
         <div class="taskHeader d-flex justify-content-between align-items-center">
           <h6>{{ item.title }}</h6>
           <span class="badge badge-dark badge-pill">{{ item.estimate }}</span>
@@ -58,39 +77,18 @@
 
   <div class="column">
     <div class="columnHeader d-flex justify-content-between align-items-center">
-      QA
-      <i class="fas fa-pencil-alt"></i>
-    </div>
-    <div class="columnBox">
-      <div class="task">
-        <div class="taskHeader d-flex justify-content-between align-items-center">
-          <h6>Title</h6>
-          <span class="badge badge-dark badge-pill">13</span>
-        </div>
-        <p class="taskDescription">Lorem Impsum dolor sit amet. Bla ldol dolor al. skdnj sdfl r.</p>
-        <div class="taskFooter d-flex">
-          <span class="taskAssignee mr-auto">Assignee</span>
-          <i class="fas fa-pencil-alt mr-2"></i>
-          <i class="far fa-trash-alt"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="columnHeader d-flex justify-content-between align-items-center">
       In Review
       <i class="fas fa-pencil-alt"></i>
     </div>
-    <div class="columnBox">
-      <div class="task">
+    <div class="columnBox" droppable [dragOverClass]="'drag-target-bg'" (onDrop)="onList4Drop($event)">
+      <div class="task" *ngFor="let item of list4" draggable [dragData]="item">
         <div class="taskHeader d-flex justify-content-between align-items-center">
-          <h6>Title</h6>
-          <span class="badge badge-dark badge-pill">13</span>
+          <h6>{{ item.title }}</h6>
+          <span class="badge badge-dark badge-pill">{{ item.estimate }}</span>
         </div>
-        <p class="taskDescription">Lorem Impsum dolor sit amet. Bla ldol dolor al. skdnj sdfl r.</p>
+        <p class="taskDescription">{{ item.description }}</p>
         <div class="taskFooter d-flex">
-          <span class="taskAssignee mr-auto">Assignee</span>
+          <span class="taskAssignee mr-auto">{{ item.assignee }}</span>
           <i class="fas fa-pencil-alt mr-2"></i>
           <i class="far fa-trash-alt"></i>
         </div>
@@ -103,22 +101,23 @@
       Done
       <i class="fas fa-pencil-alt"></i>
     </div>
-    <div class="columnBox">
-      <div class="task">
-      <div class="taskHeader d-flex justify-content-between align-items-center">
-        <h6>Title</h6>
-        <span class="badge badge-dark badge-pill">13</span>
+    <div class="columnBox" droppable [dragOverClass]="'drag-target-bg'" (onDrop)="onList5Drop($event)">
+      <div class="task" *ngFor="let item of list5" draggable [dragData]="item">
+        <div class="taskHeader d-flex justify-content-between align-items-center">
+          <h6>{{ item.title }}</h6>
+          <span class="badge badge-dark badge-pill">{{ item.estimate }}</span>
+        </div>
+        <p class="taskDescription">{{ item.description }}</p>
+        <div class="taskFooter d-flex">
+          <span class="taskAssignee mr-auto">{{ item.assignee }}</span>
+          <i class="fas fa-pencil-alt mr-2"></i>
+          <i class="far fa-trash-alt"></i>
+        </div>
       </div>
-      <p class="taskDescription">Lorem Impsum dolor sit amet. Bla ldol dolor al. skdnj sdfl r.</p>
-      <div class="taskFooter d-flex">
-        <span class="taskAssignee mr-auto">Assignee</span>
-        <i class="fas fa-pencil-alt mr-2"></i>
-        <i class="far fa-trash-alt"></i>
-      </div>
-    </div>
     </div>
   </div>
 
 </div>
 
 <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+
