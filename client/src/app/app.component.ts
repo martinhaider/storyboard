@@ -11,41 +11,38 @@ import {Column} from "./column/column.model";
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  tasks: Task[];
-  columns: Array<Column> = [];
+
+  columns = [
+    new Column('ToDoTest', 1),
+    new Column('In ProgressTest', 2),
+    new Column ('Sprint Backlog', 3)
+  ];
+
+  tasks = [
+    new Task('XXXX', 'de ergr re rerw4f43scr', 1, 'lukas', 5),
+    new Task('titretrztuzzrtle', 'deregre ergrescr', 5, 'lukavetrr res', 1),
+    new Task('tier ertrtle', 'deretzrrrer34gtreescr', 13, 'lu erkas', 1),
+    new Task('t erzhh5itle', 'descr', 5, 'lukas', 2),
+    new Task('tit rerle', 'dere trhu,io iureetescr', 8, 'lukrereas', 3),
+    new Task('titerefe rerle', 'dere trhu,io iureetescr', 8, 'lukrereas', 3),
+    new Task('tit r343erle', 'dere trhu,io iureetescr', 8, 'martin', 4),
+    new Task('titserre rerle', 'dere trhu,io iureetescr', 8, 'martin', 2),
+    new Task('tit rerle', 'dere trhu,io iureetescr', 8, 'matthias', 2),
+    new Task('tit re345rle', 'dere trhu,io iureetescr', 8, 'sven', 2),
+    new Task('tit 343rerle', 'dere trhu,io iureetescr', 8, 'olav', 4),
+  ];
+
+  //columns: Array<Column> = [];
 
   constructor(private getcolumnsService: GetcolumnsserviceService){
   }
-/*
-  listA = [
-    {name: 'milk'},
-    {name: 'juice'}
-  ];
 
-  listB = [
-    {name: 'beer'},
-    {name: 'water'}
-  ];
-
-  listC = [
-    {name: 'wine'}
-  ];
-
-  onListADrop(e: DropEvent) {
-    this.listA.push(e.dragData);
-    this.removeItem(e.dragData, this.listB);
+  onListDrop(e: DropEvent, id) {
+    e.dragData.columnId = id;
   }
 
-  onListBDrop(e: DropEvent) {
-    this.listB.push(e.dragData);
-    this.removeItem(e.dragData, this.listA);
-  }
 
-  onListCDrop(e: DropEvent) {
-    this.listC.push(e.dragData);
-    this.removeItem(e.dragData, this.listA);
-  }
-*/
+  /* old
   removeItem(item: any, list: Array<any>) {
     let index = list.map(function (e) {
       return e.title
@@ -76,7 +73,6 @@ export class AppComponent {
   list4 = [];
 
   list5 = [];
-
 
   onList1Drop(e: DropEvent) {
     console.log(e);
@@ -113,10 +109,25 @@ export class AppComponent {
     this.list5[0].columnId = 5;
   }
 
+  old END */
+
   ngOnInit() {
     this.getColumns();
   }
+
   getColumns(): void {
      this.getcolumnsService.getColumns();
+  }
+
+  filterItemsOfId(id){
+    return this.tasks.filter(x => x.columnId == id);
+  }
+
+  printTasks(){
+    console.log('*START*\n');
+    for(var i = 0; i < this.tasks.length; i++){
+      console.log(this.tasks[i].title + ' ' + this.tasks[i].columnId);
+    }
+    console.log('\n*END*')
   }
 }

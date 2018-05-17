@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {DropEvent} from 'ng-drag-drop';
+import {Component, OnInit} from '@angular/core';
 import { Column } from "./column.model";
 
 @Component({
@@ -8,7 +7,6 @@ import { Column } from "./column.model";
   styleUrls: ['./column.component.css']
 })
 export class ColumnComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
