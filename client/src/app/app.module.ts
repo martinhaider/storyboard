@@ -9,6 +9,7 @@ import { TaskComponent } from './task/task.component';
 import { ColumnModalComponent } from './column-modal/column-modal.component';
 import {GetcolumnsserviceService} from "./services/getcolumnsservice.service";
 import { TaskModalComponent } from './task-modal/task-modal.component';
+import {PostcreatecolumnService} from "./services/postcreatecolumn.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TaskModalComponent } from './task-modal/task-modal.component';
     HttpClientModule
   ],
   providers: [
-    GetcolumnsserviceService
+    GetcolumnsserviceService,
+    PostcreatecolumnService
   ],
   bootstrap: [AppComponent]
 })

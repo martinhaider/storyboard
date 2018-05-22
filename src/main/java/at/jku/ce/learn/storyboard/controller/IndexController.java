@@ -33,15 +33,11 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/add/spalte", method = RequestMethod.POST)
-    public @ResponseBody List<Spalte> addSpalte(@RequestBody Spalte spalte){
+    public void addSpalte(@RequestBody String name){
 
-        if(!spalte.getName().isEmpty()){
-            spalteService.create(spalte);
-        }
+        Spalte spalteNew = new Spalte(name, 0);
 
-        List spalteList = spalteService.findAll();
-
-        return spalteList;
+        spalteService.create(spalteNew);
     }
 
     @RequestMapping(value = "/add/aufgabe", method = RequestMethod.POST)

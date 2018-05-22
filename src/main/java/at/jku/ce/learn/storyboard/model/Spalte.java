@@ -17,6 +17,10 @@ public class Spalte {
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<Aufgabe> aufgabenList;
 
+    public Spalte(){
+
+    }
+
     public Spalte(String name, int position) {
         this.name = name;
         this.position = position;
