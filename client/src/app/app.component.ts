@@ -5,6 +5,7 @@ import {Task} from "./task/task.model";
 import { OnInit } from '@angular/core';
 import {GetcolumnsserviceService} from "./services/getcolumnsservice.service";
 import {Column} from "./column/column.model";
+import {GettaskService} from "./services/gettask.service";
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,7 @@ export class AppComponent {
 
   //columns: Array<Column> = [];
 
-  constructor(private getcolumnsService: GetcolumnsserviceService){
+  constructor(private getcolumnsService: GetcolumnsserviceService, private gettaskService: GettaskService){
   }
 
   onListDrop(e: DropEvent, id) {
@@ -112,11 +113,16 @@ export class AppComponent {
   old END */
 
   ngOnInit() {
-    this.getColumns();
+    //this.columns = this.getColumns();
+    this.tasks = this.getTasks();
   }
 
   getColumns(): void {
      this.getcolumnsService.getColumns();
+  }
+
+  getTasks(): void {
+    this.gettaskService.getTasks();
   }
 
   filterItemsOfId(id){

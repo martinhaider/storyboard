@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Column} from "../column/column.model";
+import 'rxjs/Rx';
 
 @Injectable()
 export class GetcolumnsserviceService {
@@ -9,8 +10,20 @@ export class GetcolumnsserviceService {
   constructor(private http: HttpClient) { }
 
   getColumns(){
-    console.log("entered service getcolumns");
     this.http.get<Array<Column>>('http://localhost:8080/get/all/spalte')
-      .subscribe(response => this.data = response);
+      .subscribe(
+        //data => console.log('success1446: ', data),
+        data => {
+          return data;
+          //this.data = data;
+          //this.getColumnsSuccess();
+        },
+        error => console.log('oops1446: ', error)
+      );
+  }
+
+  getColumnsSuccess(){
+    //TODO: put data to html view
+    console.log("getColumnsSuccess response: " + this.data);
   }
 }

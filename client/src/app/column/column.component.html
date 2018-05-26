@@ -1,1 +1,9 @@
-
+<div class="column">
+  <div class="columnHeader d-flex justify-content-between align-items-center">
+    {{column}}
+    <i class="fas fa-pencil-alt"></i>
+  </div>
+  <div class="columnBox" droppable [dragOverClass]="'drag-target-bg'" (onDrop)="onListDrop($event, 2)">
+    <app-task *ngFor="let task of filterItemsOfId(2)" [task]="task"></app-task>
+  </div>
+</div>

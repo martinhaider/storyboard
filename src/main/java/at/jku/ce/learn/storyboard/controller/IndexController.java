@@ -5,6 +5,7 @@ import at.jku.ce.learn.storyboard.model.Spalte;
 import at.jku.ce.learn.storyboard.service.AufgabeService;
 import at.jku.ce.learn.storyboard.service.SpalteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,17 +23,28 @@ public class IndexController {
     @Autowired
     private AufgabeService aufgabeService;
 
+    @RequestMapping("/get/all/aufgabe")
+    public @ResponseBody List<Aufgabe> getAllAufgabe(){
+
+        List<Aufgabe> aufgabenList = aufgabeService.findAll();
+
+        return aufgabenList;
+    }
+
     @RequestMapping("/get/all/spalte")
     public @ResponseBody List<Spalte> getAllSpalte(){
 
-        List spalteList = spalteService.findAll();
+        List<Spalte> spalteList = spalteService.findAll();
 
-        System.out.println("get all spalte is called!");
+        for(Spalte s : spalteList){
+            System.out.println(s.getName() + " " + s.getPosition());
+        }
 
-        return spalteList;
+        return spalteList; //"get all spalte success"; //spalteList;
     }
 
     @RequestMapping(value = "/add/spalte", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
     public void addSpalte(@RequestBody String name){
 
         Spalte spalteNew = new Spalte(name, 0);
@@ -41,12 +53,17 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/add/aufgabe", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
+    //public @ResponseBody List<Spalte> addAufgabe(@RequestBody String titel, @RequestBody String beschreibung, @RequestBody String person, @RequestBody int estimate, @RequestBody int position, @RequestBody int spalte){
     public @ResponseBody List<Spalte> addAufgabe(@RequestBody Aufgabe aufgabe){
 
-        if(!aufgabe.getBeschreibung().isEmpty() && !aufgabe.getTitel().isEmpty() && !aufgabe.getPerson().isEmpty()){
+        //System.out.println(titel + "; " + beschreibung + "; " + person + "; " + estimate + "; " + position + "; " + spalte);
+        System.out.println(aufgabe.getTitel() + "; " + aufgabe.getBeschreibung());
+
+        /*if(!aufgabe.getBeschreibung().isEmpty() && !aufgabe.getTitel().isEmpty() && !aufgabe.getPerson().isEmpty()){
             Spalte spalte = spalteService.findById(aufgabe.getSpalte().getName());
             spalte.getAufgabenList().add(aufgabe);
-        }
+        }*/
         List spalteList = spalteService.findAll();
 
         return spalteList;
