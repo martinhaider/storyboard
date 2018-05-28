@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 @Transactional
 public interface SpalteRepository extends CrudRepository<Spalte, Long> {
+    Spalte findById(int id);
 
     //TODO: @Query("SELECT s FROM spalte WHERE s.name LIKE :#{spalteName}")
     //Spalte findByName(@Param("spalteName") String spalteName);

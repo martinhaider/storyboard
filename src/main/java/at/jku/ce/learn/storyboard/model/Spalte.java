@@ -8,6 +8,9 @@ import java.util.List;
 public class Spalte {
 
     @Id
+    @Column(name="id")
+    private int id;
+
     @Column(name="name")
     private String name;
 
@@ -30,6 +33,21 @@ public class Spalte {
         this.name = name;
         this.position = position;
         this.aufgabenList = aufgabenList;
+    }
+
+    public Spalte(int id, String name, int position, List<Aufgabe> aufgabenList) {
+        this.id = id;
+        this.name = name;
+        this.position = position;
+        this.aufgabenList = aufgabenList;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

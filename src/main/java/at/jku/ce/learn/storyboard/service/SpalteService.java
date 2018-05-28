@@ -29,8 +29,7 @@ public class SpalteService {
         return (List)spalteRepository.findAll();
     }
 
-    public Spalte findById(String name){
-        return null;
-        //TODO: return spalteRepository.findByName(name);
+    public Spalte findById(int id){
+        return spalteRepository.findById(id);
     }
 }

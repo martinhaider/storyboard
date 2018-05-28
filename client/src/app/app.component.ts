@@ -33,6 +33,8 @@ export class AppComponent {
     new Task('tit 343rerle', 'dere trhu,io iureetescr', 8, 'olav', 4),
   ];
 
+   newTask;
+
   //columns: Array<Column> = [];
 
   constructor(private getcolumnsService: GetcolumnsserviceService, private gettaskService: GettaskService){
@@ -114,15 +116,12 @@ export class AppComponent {
 
   ngOnInit() {
     //this.columns = this.getColumns();
-    this.tasks = this.getTasks();
+    this.gettaskService.getTasks().subscribe(data => console.error(data));
+    console.log("new task: " + this.newTask);
   }
 
   getColumns(): void {
      this.getcolumnsService.getColumns();
-  }
-
-  getTasks(): void {
-    this.gettaskService.getTasks();
   }
 
   filterItemsOfId(id){

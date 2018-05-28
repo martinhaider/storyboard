@@ -8,6 +8,9 @@ import java.util.Calendar;
 public class Aufgabe {
 
     @Id
+    @Column(name="id")
+    private int id;
+
     @Column(name="titel")
     private String titel;
 
@@ -27,6 +30,10 @@ public class Aufgabe {
     @JoinColumn(name="spalte")
     private Spalte spalte;
 
+    public Aufgabe() {
+
+    }
+
     public Aufgabe(String titel, String beschreibung, String person, int estimate, int position, Spalte spalte) {
         this.titel = titel;
         this.beschreibung = beschreibung;
@@ -34,6 +41,24 @@ public class Aufgabe {
         this.estimate = estimate;
         this.position = position;
         this.spalte = spalte;
+    }
+
+    public Aufgabe(int id, String titel, String beschreibung, String person, int estimate, int position, Spalte spalte) {
+        this.id = id;
+        this.titel = titel;
+        this.beschreibung = beschreibung;
+        this.person = person;
+        this.estimate = estimate;
+        this.position = position;
+        this.spalte = spalte;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitel() {

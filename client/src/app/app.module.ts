@@ -11,6 +11,9 @@ import {GetcolumnsserviceService} from "./services/getcolumnsservice.service";
 import { TaskModalComponent } from './task-modal/task-modal.component';
 import {PostcreatecolumnService} from "./services/postcreatecolumn.service";
 import {PostcreatetaskService} from "./services/postcreatetask.service";
+import {GettaskService} from "./services/gettask.service";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -23,10 +26,12 @@ import {PostcreatetaskService} from "./services/postcreatetask.service";
   imports: [
     BrowserModule,
     NgDragDropModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     GetcolumnsserviceService,
+    GettaskService,
     PostcreatecolumnService,
     PostcreatetaskService
   ],

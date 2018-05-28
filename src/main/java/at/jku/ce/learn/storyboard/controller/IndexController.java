@@ -25,8 +25,17 @@ public class IndexController {
 
     @RequestMapping("/get/all/aufgabe")
     public @ResponseBody List<Aufgabe> getAllAufgabe(){
+        /*System.out.println("ENTEREd GET ALL AUFGABE");
+        Spalte spalte = spalteService.findById(1);
+        Aufgabe aufgabe = new Aufgabe(1,"TaskTitel", "TaskBeschreibung", "TaskPerson", 1, 1, spalte);
+
+        aufgabeService.create(aufgabe);*/
 
         List<Aufgabe> aufgabenList = aufgabeService.findAll();
+
+        for(Aufgabe a : aufgabenList){
+            System.out.println(a.getTitel() + " " + a.getBeschreibung());
+        }
 
         return aufgabenList;
     }
